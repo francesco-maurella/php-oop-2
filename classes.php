@@ -15,12 +15,12 @@ class Product  {
     }
 }
 
-// Alimenti
+// Alimentari
 class Food extends Product
 {
   protected $category = 'food';
   protected $weigth;
-  protected $exp_date:
+  protected $exp_date;
   //setter
   function setProp(int $weigth, string $exp_date) {
     $this->weigth = $weigth;
@@ -29,16 +29,16 @@ class Food extends Product
 
 }
 
-// Tech
+// Tecnologìa
 class Tech extends Product
 {
   protected $category = 'tech';
-  protected $hardware;
-  protected $model:
+  protected $type;
+  protected $year;
   //setter
-  function setProp(string $hardware, string $model) {
-    $this->hardware = $hardware;
-    $this->model = $model;
+  function setProp(string $type, int $year) {
+    $this->type = $type;
+    $this->year = $year;
   }
 
 }
@@ -48,16 +48,15 @@ class Dress extends Product
 {
   protected $category = 'dress';
   protected $material;
-  protected $size:
+  protected $size;
   //setter
   function setProp(string $material, string $size) {
     $this->material = $material;
     $this->size = $size;
   }
-
 }
 
-
+// UTENTE
 class User {
   protected $id;
   protected $name;
@@ -70,32 +69,43 @@ class User {
   }
 }
 
-// Abbigliamento
+// Venditore
 class Seller extends User
 {
-  $tax_code;
-  $products = [];
+  protected $tax_code;
+  protected $products = [];
   //setter
-  function setProp(string $tax_code) {
+  function setProp(int $tax_code) {
     $this->tax_code = $tax_code;
   }
-  function addProduct(string $product) {
+  function addProduct(Product $product) {
     $this->products[] = $product;
+  }
+}
+
+// Compratore
+class Buyer extends User
+{
+  protected $address;
+  protected $payment;
+  //setter
+  function setProp(string $address, string $payment) {
+    $this->address = $address;
+    $this->payment = $payment;
   }
 }
 
 class Transition {
   protected $id;
-  protected $product;
-  protected $user;
-  protected $quantity;
-  protected $price;
+  protected $buyer;
+  protected $products = [];
 
-  public function __construct (int $id, int $product, int $user, int $quantity, int $price) {
+  public function __construct (Buyer $buyer, int $id) {
+    $this->buyer = $buyer;
     $this->id = $id;
-    $this->product = $product;
-    $this->user = $user;
-    $this->quantity = $quantity;
-    $this->price = $price;
+  }
+
+  function addProduct(Product $product) {
+    $this->products[] = $product;
   }
 }

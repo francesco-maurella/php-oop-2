@@ -2,8 +2,8 @@
 ## Oggetti, Ereditarietà, Eccezioni.
 
 Rappresentazione, attraverso le **classi**, dei prodotti specifici e di utenti con gestione dell'**ereditarietà** dove necessario, facenti parte del catalogo di uno Shop.
-Interazione di tali oggetti tra di loro
+Interazione di tali oggetti tra di loro.
 
-Sono suddivisisi in `classes.php, server.php` ed il tutto è stampato su `index.php`.
+I file sono suddivisisi in `classes.php` e `index.php` collegati da un `require_once`.
 
-Diagramma esemplificativo in PDF.
+Diagramma esemplificativo in _PDF_.
