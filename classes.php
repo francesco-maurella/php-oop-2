@@ -87,25 +87,42 @@ class Seller extends User
 class Buyer extends User
 {
   protected $address;
-  protected $payment;
+  protected $credit_card = false;
   //setter
-  function setProp(string $address, string $payment) {
+  function setProp(string $address) {
     $this->address = $address;
-    $this->payment = $payment;
+  }
+  function addCard(Card $card) {
+    $this->credit_card = $card;
+  }
+}
+
+// CARTA CREDITO
+class Card
+{
+  protected $num;
+  //setter
+  function __construct (string $num) {
+    $this->num = $num;
   }
 }
 
 class Transition {
   protected $id;
   protected $buyer;
+  protected $seller;
   protected $products = [];
 
-  public function __construct (Buyer $buyer, int $id) {
+  public function __construct (Buyer $buyer, Seller $seller, int $id) {
     $this->buyer = $buyer;
+    $this->seller = $seller;
     $this->id = $id;
   }
 
   function addProduct(Product $product) {
     $this->products[] = $product;
+  }
+  function getId() {
+    return $this->id;
   }
 }

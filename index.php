@@ -45,12 +45,16 @@ $seller_001->addProduct($dress_007);
 $seller_001->addProduct($dress_008);
 $seller_001->addProduct($dress_009);
 
+//Carta di credito
+$ccard_001 = new Card ('26526262323023');
+
 //Compratore
 $buyer_001 = new Buyer (6785, 'Steve Ebay', 'ebay2021');
-$buyer_001->setProp('Via Aldo Moro 55', 'Paypal');
+$buyer_001->setProp('Via Aldo Moro 55');
+$buyer_001->addCard($ccard_001);
 
 //Transazione
-$transition_001 = new Transition ($buyer_001, 428898);
+$transition_001 = new Transition ($buyer_001, $seller_001, 428898);
 $transition_001->addProduct($food_002);
 $transition_001->addProduct($tech_005);
 
